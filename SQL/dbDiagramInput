@@ -1,0 +1,62 @@
+Table Movie {
+	Id integer PK 
+	Year integer 
+	Title nvarchar(255) 
+	PosterUrl nvarchar(255)
+	Description nvarchar(MAX)
+	Director string 
+}
+
+Table Actor {
+	Id integer PK 
+	FirstName nvarchar(255) 
+	LastName nvarchar(255) 
+}
+
+Table Image {
+	Id integer PK 
+	Path nvarchar(255) 
+	Alt nvarchar(255)
+}
+
+Table Role {
+	Id integer PK
+	Name integer
+}
+
+Table ActorMovie {
+	Id integer PK 
+	ActorId integer 
+	MovieId integer 
+	RoleId integer 
+	CharacterFirst nvarchar(255)
+	CharacterLast nvarchar(255) 
+}
+
+Table ActorMovieImage {
+	Id integer PK 
+	ActorMovieId integer 
+	ImageId integer 
+}
+
+Table MovieImage {
+  Id integer PK
+  MovieId integer
+  ImageId integer
+  IsPoster bit
+}
+
+
+Ref: "Role"."Id" < "ActorMovie"."RoleId"
+
+Ref: "Actor"."Id" < "ActorMovie"."ActorId"
+
+Ref: "Movie"."Id" < "MovieImage"."MovieId"
+
+Ref: "Image"."Id" < "MovieImage"."ImageId"
+
+Ref: "Movie"."Id" < "ActorMovie"."MovieId"
+
+Ref: "ActorMovie"."Id" < "ActorMovieImage"."ActorMovieId"
+
+Ref: "Image"."Id" < "ActorMovieImage"."ImageId"
