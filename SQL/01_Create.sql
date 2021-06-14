@@ -5,6 +5,9 @@ IF db_id('ShakenNotStirred') IS NULL
 	CREATE DATABASE [ShakenNotStirred]
 GO
 
+USE [ShakenNotStirred];
+GO
+
 DROP TABLE IF EXISTS [ActorMovieImage];
 DROP TABLE IF EXISTS [MovieImage];
 DROP TABLE IF EXISTS [ActorMovie];
@@ -15,7 +18,7 @@ DROP TABLE IF EXISTS [Movie];
 
 CREATE TABLE [Movie]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [Year] integer NOT NULL,
     [Title] nvarchar(255) NOT NULL,
     [Description] nvarchar(MAX),
@@ -26,7 +29,7 @@ GO
 
 CREATE TABLE [Actor]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [FirstName] nvarchar(255) NOT NULL,
     [LastName] nvarchar(255) NOT NULL
 )
@@ -34,7 +37,7 @@ GO
 
 CREATE TABLE [Image]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [Path] nvarchar(255) NOT NULL,
     [Alt] nvarchar(255)
 )
@@ -42,14 +45,14 @@ GO
 
 CREATE TABLE [Role]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
-    [Name] integer NOT NULL
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
+    [Name] nvarchar(255) NOT NULL
 )
 GO
 
 CREATE TABLE [ActorMovie]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [ActorId] integer NOT NULL,
     [MovieId] integer NOT NULL,
     [RoleId] integer NOT NULL,
@@ -61,7 +64,7 @@ GO
 
 CREATE TABLE [ActorMovieImage]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [ActorMovieId] integer NOT NULL,
     [ImageId] integer NOT NULL
 )
@@ -69,7 +72,7 @@ GO
 
 CREATE TABLE [MovieImage]
 (
-    [Id] integer PRIMARY KEY NOT NULL,
+    [Id] integer PRIMARY KEY IDENTITY NOT NULL,
     [MovieId] integer NOT NULL,
     [ImageId] integer NOT NULL,
     [IsPoster] bit NOT NULL DEFAULT 0
