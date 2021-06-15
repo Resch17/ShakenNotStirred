@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj": {}
+    "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj": {}
   },
   "projects": {
-    "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj": {
+    "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj",
+        "projectUniqueName": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj",
         "projectName": "ShakenNotStirred",
-        "projectPath": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj",
+        "projectPath": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred.csproj",
         "packagesPath": "C:\\Users\\aaron\\.nuget\\packages\\",
-        "outputPath": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\ShakenNotStirred\\obj\\",
+        "outputPath": "G:\\WebDev\\Projects\\ShakenNotStirred\\ShakenNotStirred\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,9 +44,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.90, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [

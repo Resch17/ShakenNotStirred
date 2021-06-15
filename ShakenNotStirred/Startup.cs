@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ShakenNotStirred.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace ShakenNotStirred
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
