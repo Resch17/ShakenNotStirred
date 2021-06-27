@@ -29,6 +29,8 @@ namespace ShakenNotStirred
         {
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IActorRepository, ActorRepository>();
+            services.AddTransient<IActorMovieRepository, ActorMovieRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

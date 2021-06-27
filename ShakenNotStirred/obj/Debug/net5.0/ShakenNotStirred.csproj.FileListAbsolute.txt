@@ -34,3 +34,6 @@ G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\runtimes\w
 G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\sns-client\package-lock.json
+G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\sns-client\package.json
+G:\WebDev\Projects\ShakenNotStirred\ShakenNotStirred\bin\Debug\net5.0\sns-client\public\manifest.json

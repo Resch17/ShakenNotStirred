@@ -9,8 +9,11 @@ namespace ShakenNotStirred.Models
     {
         public int Id { get; set; }
         public int ActorId { get; set; }
+        public Actor Actor { get; set; }
         public int MovieId { get; set; }
+        public Movie Movie { get; set; }
         public int RoleId { get; set; }
+        public Role Role { get; set; }
         public string CharacterFirst { get; set; }
         public string CharacterLast { get; set; }
         public bool IsAlive { get; set; }
