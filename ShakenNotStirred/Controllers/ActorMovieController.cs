@@ -28,13 +28,13 @@ namespace ShakenNotStirred.Controllers
         [HttpGet("actor/{id}")]
         public IActionResult GetByActor(int id)
         {
-            return Ok(_actorMovieRepository.GetByActor(id));
+            return Ok(_actorMovieRepository.GetByResourceId(id, "actorId"));
         }
 
         [HttpGet("movie/{id}")]
         public IActionResult GetByMovie(int id)
         {
-            return Ok(_actorMovieRepository.GetByMovie(id));
+            return Ok(_actorMovieRepository.GetByResourceId(id, "movieId"));
         }
 
     }

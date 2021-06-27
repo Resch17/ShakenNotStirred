@@ -15,7 +15,7 @@ namespace ShakenNotStirred.Repositories
     {
         public ActorMovieRepository(IConfiguration configuration) : base(configuration) { }
 
-        private string _baseQuery = @"SELECT am.[Id], am.[ActorId], am.[MovieId], am.[RoleId], a.[FirstName], a.[LastName], m.[Year], m.[Title], 
+        private string _baseQuery = @"SELECT am.[Id], am.[ActorId], am.[MovieId], am.[RoleId], a.[FirstName], a.[LastName], m.[Year], m.[Title], m.[Description], m.[Director], m.[Writer], 
                                 r.[Name], am.[CharacterFirst], am.[CharacterLast], am.[IsAlive]
 	                        FROM [ActorMovie] am 
 	                        LEFT JOIN [Actor] a ON am.[ActorId] = a.[Id]
@@ -48,15 +48,22 @@ namespace ShakenNotStirred.Repositories
             }
         }
 
-        public List<ActorMovie> GetByMovie(int movieId)
+        public List<ActorMovie> GetByResourceId(int id, string resourceId)
         {
+            List<string> validResourceIds = new List<string>()
+            {
+                "actorId", "movieId", "roleId"
+            };
+            if (!validResourceIds.Contains(resourceId)) {
+                throw new Exception("Naahhhhhh");
+            }
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = _baseQuery + "WHERE am.[MovieId] = @MovieId";
-                    DbUtils.AddParameter(cmd, "@MovieId", movieId);
+                    cmd.CommandText = _baseQuery + $"WHERE am.[{resourceId}] = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", id);
                     var actorMovies = new List<ActorMovie>();
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -74,33 +81,6 @@ namespace ShakenNotStirred.Repositories
                 }
             }
         } 
-
-        public List<ActorMovie> GetByActor(int actorId)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = _baseQuery + "WHERE am.[ActorId] = @ActorId";
-                    DbUtils.AddParameter(cmd, "@ActorId", actorId);
-                    var actorMovies = new List<ActorMovie>();
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        var actorMovieId = DbUtils.GetInt(reader, "Id");
-                        var existingActorMovie = actorMovies.FirstOrDefault(am => am.Id == actorMovieId);
-                        if (existingActorMovie == null)
-                        {
-                            existingActorMovie = NewActorMovieFromDb(reader);
-                            actorMovies.Add(existingActorMovie);
-                        }
-                    }
-                    reader.Close();
-                    return actorMovies;
-                }
-            }
-        }
 
         public void AddActorMovie(ActorMovie actorMovie)
         {
@@ -141,7 +121,10 @@ namespace ShakenNotStirred.Repositories
                 {
                     Id = DbUtils.GetInt(reader, "MovieId"),
                     Year = DbUtils.GetInt(reader, "Year"),
-                    Title = DbUtils.GetString(reader, "Title")
+                    Title = DbUtils.GetString(reader, "Title"),
+                    Description = DbUtils.GetString(reader, "Description"),
+                    Writer = DbUtils.GetString(reader, "Writer"),
+                    Director = DbUtils.GetString(reader, "Director")
                 },
                 Role = new Role()
                 {

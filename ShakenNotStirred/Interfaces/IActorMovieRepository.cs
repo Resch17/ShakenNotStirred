@@ -7,7 +7,6 @@ namespace ShakenNotStirred.Repositories
     {
         void AddActorMovie(ActorMovie actorMovie);
         List<ActorMovie> GetAllActorMovies();
-        List<ActorMovie> GetByActor(int actorId);
-        List<ActorMovie> GetByMovie(int movieId);
+        List<ActorMovie> GetByResourceId(int id, string resourceId);
     }
 }
