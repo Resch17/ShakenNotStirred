@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ActorMovieContext } from '../providers/ActorMovieProvider';
 import { ActorForm } from './ActorForm';
+import { CharacterForm } from "./CharacterForm";
 
 export const Home = () => {
     const { getAllActorMovies } = useContext(ActorMovieContext);
@@ -15,7 +16,7 @@ export const Home = () => {
             <h1>Welcome!</h1>
             <h2>Add an actor</h2>
             <ActorForm />
-            {console.log(actorMovies)}
+            <CharacterForm />
         </>
     );
 };

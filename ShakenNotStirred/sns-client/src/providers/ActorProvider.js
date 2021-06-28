@@ -23,11 +23,11 @@ export const ActorProvider = (props) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(actor),
-        });
+        }).then(getAllActors);
     };
 
     return (
-        <ActorContext.Provider value={{ getAllActors, addActor }}>
+        <ActorContext.Provider value={{ getAllActors, addActor, actors }}>
             {props.children}
         </ActorContext.Provider>
     );

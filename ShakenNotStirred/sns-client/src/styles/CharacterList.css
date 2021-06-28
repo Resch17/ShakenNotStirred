@@ -1,0 +1,29 @@
+.character-list,
+.character-list__header, .character-list__row {
+    display: flex;
+}
+.character-list {
+    flex-direction: column;
+}
+
+.character-list__header, .character-list__row {
+    flex-direction: row;
+	margin-bottom: 1em;
+	align-items: center;
+	justify-content: center;
+	height: 3em;
+}
+
+.character-list__prop, .character-list__heading {
+	margin: 0 2em;
+	width: 20em;
+}
+
+.character-list__heading {
+	font-weight: bold;
+}
+
+.character-list__row:nth-of-type(odd) {
+	background-color: #dddddd;
+}
+

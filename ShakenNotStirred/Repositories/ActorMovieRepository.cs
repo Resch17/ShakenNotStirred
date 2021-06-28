@@ -80,25 +80,33 @@ namespace ShakenNotStirred.Repositories
                     return actorMovies;
                 }
             }
-        } 
+        }
 
         public void AddActorMovie(ActorMovie actorMovie)
         {
-            var sql = @"INSERT INTO [ActorMovie] ([ActorId], [MovieId], [RoleId], [CharacterFirst], [CharacterLast], [IsAlive)
+            var parameters = new
+            {
+                ActorId = actorMovie.ActorId,
+                MovieId = actorMovie.MovieId,
+                RoleId = actorMovie.RoleId,
+                CharacterFirst = actorMovie.CharacterFirst,
+                CharacterLast = actorMovie.CharacterLast
+            };
+            var sql = @"INSERT INTO [ActorMovie] ([ActorId], [MovieId], [RoleId], [CharacterFirst], [CharacterLast])
                         OUTPUT INSERTED.Id
-                        VALUES (@ActorId, @MovieId, @RoleId, @CharacterFirst, @CharacterLast, @IsAlive)";
+                        VALUES (@ActorId, @MovieId, @RoleId, @CharacterFirst, @CharacterLast)";
             try
             {
                 using (IDbConnection db = new SqlConnection(_connectionString))
                 {
-                    actorMovie.Id = db.QuerySingle<int>(sql, actorMovie);
+                    actorMovie.Id = db.QuerySingle<int>(sql, parameters);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-        }
+        } 
 
         private ActorMovie NewActorMovieFromDb(SqlDataReader reader)
         {

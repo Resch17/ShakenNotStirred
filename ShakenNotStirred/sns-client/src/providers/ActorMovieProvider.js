@@ -41,6 +41,7 @@ export const ActorMovieProvider = (props) => {
                 addActorMovie,
                 getActorMoviesByActor,
                 getActorMoviesByMovie,
+                actorMovies
             }}
         >
             {props.children}

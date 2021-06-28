@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShakenNotStirred.Models;
 using ShakenNotStirred.Repositories;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,20 @@ namespace ShakenNotStirred.Controllers
         public IActionResult GetByMovie(int id)
         {
             return Ok(_actorMovieRepository.GetByResourceId(id, "movieId"));
+        }
+
+        [HttpPost]
+        public IActionResult AddActorMovie(ActorMovie actorMovie)
+        {
+            try
+            {
+                _actorMovieRepository.AddActorMovie(actorMovie);
+                return Ok(new { actorMovie.Id });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
     }
