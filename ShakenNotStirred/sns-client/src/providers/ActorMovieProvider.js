@@ -31,6 +31,9 @@ export const ActorMovieProvider = (props) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(actorMovie),
+        }).then((res) => {
+            getAllActorMovies();
+            return res;
         });
     };
 
@@ -41,7 +44,7 @@ export const ActorMovieProvider = (props) => {
                 addActorMovie,
                 getActorMoviesByActor,
                 getActorMoviesByMovie,
-                actorMovies
+                actorMovies,
             }}
         >
             {props.children}

@@ -39,6 +39,7 @@ export const ActorForm = () => {
 
     return (
         <form className="actor-form">
+            <h1>Add an actor</h1>
             <div className="alert-spot">{alert}</div>
             <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
